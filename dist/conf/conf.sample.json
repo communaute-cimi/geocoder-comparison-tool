@@ -1,0 +1,68 @@
+{
+    "map": {
+        "osmUrl": "http://{s}.tile.openstreetmap.fr/osmfr/",
+        "initView" : {
+            "lat" : 46.509,
+            "lon" : 2.197,
+            "zoom" : 5 
+        }
+    },
+    "geocoders": [{
+        	"shortName": "BAN",
+        	"id" : "DATA-GOUV-BAN",
+            "name": "Géocodeur de la BAN",
+            "color": "#ECCACA",
+            "iconColor":"red",
+            "useHttpProxy":false, 
+            "jsFunction": "processBanResponse",
+            "urlGeocoder": "http://api-adresse.data.gouv.fr/search/",
+            "urlProxy": "proxy/geocodeBanProxy.php",
+            "mockResponse" : false
+        },{
+        	"shortName": "Nominatim",
+        	"id" : "NOMINATIM",
+            "name": "Serveur de géocodage nominatim",
+            "color": "#CCEAB0",
+            "iconColor":"green",
+            "jsFunction": "processNominatimResponse",
+            "useHttpProxy":false,  
+            "urlGeocoder" : "http://nominatim.openstreetmap.org/search",
+            "urlProxy": "proxy/GeocodeNominatimProxy.php",
+            "mockResponse" : false
+        },{
+            "shortName": "Google",
+            "id" : "GOOGLE",
+            "name": "Service de géocodage Google Maps",
+            "color": "#EACCB0",
+            "iconColor":"green",            
+            "jsFunction": "processGoogleResponse",
+            "useHttpProxy":false, 
+            "urlGeocoder" : "http://maps.google.com/maps/api/geocode/json",
+            "urlProxy": "proxy/GeocodeGoogleProxy.php",
+            "mockResponse" : false
+        } 
+              
+    ],
+    "proxy": {
+        "host": "10.xxx.xx.xx",
+        "port": "3128",
+        "user": "user",
+        "pwd": "pwd"
+    },
+    "env" : "prod",
+    "references" : { 
+        "markerColors" : ["red", "darkred", "orange", "green", "darkgreen", "blue", "purple", "darkpuple", "cadetblue"],
+        "osmBaseMapUrls" : {
+        	"osmFr": "http://{s}.tile.openstreetmap.fr/osmfr/",
+	        "osmOrg": "http://{s}.tile.openstreetmap.org/",
+	        "osmPsi": "http://osm.psi.minint.fr/"
+        },"nominatimGeocoders" : {
+            "official" : "http://nominatim.openstreetmap.org/search",
+            "proxyIntra" : "http://esb3.psi.minint.fr/nominatim/search"
+        }, "JdonRef" : {
+            "preProd" : "http://facade.sig.pp.psi.minint.fr/services/jdonref/service?wsdl",
+            "prodWsdlLocal" : "./wsdl/lrppn-soap-token_LRPPN.wsdl",
+            "prod" : "http://facade.sig.psi.minint.fr/xxx/services/jdonref/service?wsdl"
+        }
+    }
+}

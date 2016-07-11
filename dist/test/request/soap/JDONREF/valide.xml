@@ -1,0 +1,59 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns2:valideResponse xmlns:ns2="http://jdonref.ppol/">
+			<return>
+				<codeRetour>1</codeRetour>
+				<propositions>
+					<code>1</code>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees>rue du chemin Vert</donnees>
+					<donnees></donnees>
+					<donnees>91580 ETRECHY</donnees>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine>rue du chemin Vert</donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine>91580 Etrechy</donneesOrigine>
+					<ids></ids>
+					<ids></ids>
+					<ids></ids>
+					<ids>1429517784</ids>
+					<ids></ids>
+					<ids>91226</ids>
+					<note>200.0</note>
+					<service>4</service>
+					<t0>05/05/2011</t0>
+					<t1>05/05/2060</t1>
+				</propositions>
+				<propositions>
+					<code>1</code>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees></donnees>
+					<donnees>91580 ETRECHY</donnees>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine>villa des marronniers</donneesOrigine>
+					<donneesOrigine></donneesOrigine>
+					<donneesOrigine>91580 Etrechy</donneesOrigine>
+					<ids></ids>
+					<ids></ids>
+					<ids></ids>
+					<ids></ids>
+					<ids></ids>
+					<ids>91226</ids>
+					<note>200.0</note>
+					<service>5</service>
+					<t0>05/05/2011</t0>
+					<t1>05/05/2060</t1>
+				</propositions>
+			</return>
+		</ns2:valideResponse>
+	</soap:Body>
+</soap:Envelope>

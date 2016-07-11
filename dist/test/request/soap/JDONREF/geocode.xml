@@ -1,0 +1,18 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Body>
+		<ns2:geocodeResponse xmlns:ns2="http://jdonref.ppol/">
+			<return>
+				<codeRetour>1</codeRetour>
+				<propositions>
+					<date>09/06/2016</date>
+					<projection>4326</projection>
+					<referentiel>Navteq</referentiel>
+					<service>5</service>
+					<type>6</type>
+					<x>2.1892890545960464</x>
+					<y>48.48978918977383</y>
+				</propositions>
+			</return>
+		</ns2:geocodeResponse>
+	</soap:Body>
+</soap:Envelope>

@@ -1,0 +1,521 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://jdonref.ppol/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="JDONREFService" targetNamespace="http://jdonref.ppol/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://jdonref.ppol/" targetNamespace="http://jdonref.ppol/" version="1.0">
+
+  <xs:element name="contacte" type="tns:contacte"/>
+
+  <xs:element name="contacteResponse" type="tns:contacteResponse"/>
+
+  <xs:element name="decoupe" type="tns:decoupe"/>
+
+  <xs:element name="decoupeResponse" type="tns:decoupeResponse"/>
+
+  <xs:element name="geocode" type="tns:geocode"/>
+
+  <xs:element name="geocodeResponse" type="tns:geocodeResponse"/>
+
+  <xs:element name="getVersion" type="tns:getVersion"/>
+
+  <xs:element name="getVersionResponse" type="tns:getVersionResponse"/>
+
+  <xs:element name="normalise" type="tns:normalise"/>
+
+  <xs:element name="normaliseResponse" type="tns:normaliseResponse"/>
+
+  <xs:element name="revalide" type="tns:revalide"/>
+
+  <xs:element name="revalideResponse" type="tns:revalideResponse"/>
+
+  <xs:element name="reverse" type="tns:reverse"/>
+
+  <xs:element name="reverseResponse" type="tns:reverseResponse"/>
+
+  <xs:element name="valide" type="tns:valide"/>
+
+  <xs:element name="valideResponse" type="tns:valideResponse"/>
+
+  <xs:complexType name="reverse">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element name="distance" type="xs:double"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reverseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatGeocodageInverse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatGeocodageInverse">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionGeocodageInverse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatErreur">
+    <xs:sequence>
+      <xs:element name="code" type="xs:int"/>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionGeocodageInverse">
+    <xs:sequence>
+      <xs:element name="code" type="xs:int"/>
+      <xs:element minOccurs="0" name="distance" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donneesOrigine" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="referentiel" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+      <xs:element minOccurs="0" name="t0" type="xs:string"/>
+      <xs:element minOccurs="0" name="t1" type="xs:string"/>
+      <xs:element minOccurs="0" name="x" type="xs:string"/>
+      <xs:element minOccurs="0" name="y" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="normalise">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element name="operation" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="normaliseResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatNormalisation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatNormalisation">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionNormalisation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionNormalisation">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getVersion">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getVersionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatVersion"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatVersion">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionVersion"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nom" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+      <xs:element minOccurs="0" name="version" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contacte">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element name="operation" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="contacteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatContacte"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatContacte">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="valide">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element name="operation" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="valideResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatValidation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatValidation">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionValidation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionValidation">
+    <xs:sequence>
+      <xs:element name="code" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donneesOrigine" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="note" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+      <xs:element minOccurs="0" name="t0" type="xs:string"/>
+      <xs:element minOccurs="0" name="t1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="decoupe">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="operations" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="decoupeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatDecoupage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatDecoupage">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionDecoupage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionDecoupage">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revalide">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="revalideResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatRevalidation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatRevalidation">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionRevalidation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionRevalidation">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donneesOrigine" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+      <xs:element minOccurs="0" name="t0" type="xs:string"/>
+      <xs:element minOccurs="0" name="t1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="geocode">
+    <xs:sequence>
+      <xs:element name="application" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="services" nillable="true" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="donnees" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="ids" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="geocodeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:resultatGeocodage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resultatGeocodage">
+    <xs:sequence>
+      <xs:element name="codeRetour" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="erreurs" nillable="true" type="tns:resultatErreur"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="propositions" nillable="true" type="tns:propositionGeocodage"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="propositionGeocodage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="date" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="options" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="projection" type="xs:string"/>
+      <xs:element minOccurs="0" name="referentiel" type="xs:string"/>
+      <xs:element name="service" type="xs:int"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="x" type="xs:string"/>
+      <xs:element minOccurs="0" name="y" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="contacte">
+    <wsdl:part element="tns:contacte" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="normalise">
+    <wsdl:part element="tns:normalise" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="geocodeResponse">
+    <wsdl:part element="tns:geocodeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reverseResponse">
+    <wsdl:part element="tns:reverseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="contacteResponse">
+    <wsdl:part element="tns:contacteResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="valide">
+    <wsdl:part element="tns:valide" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="valideResponse">
+    <wsdl:part element="tns:valideResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="geocode">
+    <wsdl:part element="tns:geocode" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="decoupe">
+    <wsdl:part element="tns:decoupe" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersion">
+    <wsdl:part element="tns:getVersion" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revalide">
+    <wsdl:part element="tns:revalide" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="normaliseResponse">
+    <wsdl:part element="tns:normaliseResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revalideResponse">
+    <wsdl:part element="tns:revalideResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="decoupeResponse">
+    <wsdl:part element="tns:decoupeResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part element="tns:getVersionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reverse">
+    <wsdl:part element="tns:reverse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="JDONREF">
+    <wsdl:operation name="reverse">
+      <wsdl:input message="tns:reverse" name="reverse">
+    </wsdl:input>
+      <wsdl:output message="tns:reverseResponse" name="reverseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="normalise">
+      <wsdl:input message="tns:normalise" name="normalise">
+    </wsdl:input>
+      <wsdl:output message="tns:normaliseResponse" name="normaliseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <wsdl:input message="tns:getVersion" name="getVersion">
+    </wsdl:input>
+      <wsdl:output message="tns:getVersionResponse" name="getVersionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contacte">
+      <wsdl:input message="tns:contacte" name="contacte">
+    </wsdl:input>
+      <wsdl:output message="tns:contacteResponse" name="contacteResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valide">
+      <wsdl:input message="tns:valide" name="valide">
+    </wsdl:input>
+      <wsdl:output message="tns:valideResponse" name="valideResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decoupe">
+      <wsdl:input message="tns:decoupe" name="decoupe">
+    </wsdl:input>
+      <wsdl:output message="tns:decoupeResponse" name="decoupeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="revalide">
+      <wsdl:input message="tns:revalide" name="revalide">
+    </wsdl:input>
+      <wsdl:output message="tns:revalideResponse" name="revalideResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="geocode">
+      <wsdl:input message="tns:geocode" name="geocode">
+    </wsdl:input>
+      <wsdl:output message="tns:geocodeResponse" name="geocodeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JDONREFServiceSoapBinding" type="tns:JDONREF">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="reverse">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="reverse">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reverseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVersion">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getVersion">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getVersionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="normalise">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="normalise">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="normaliseResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="contacte">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="contacte">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="contacteResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valide">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="valide">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="valideResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="decoupe">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="decoupe">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="decoupeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="revalide">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revalide">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revalideResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="geocode">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="geocode">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="geocodeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JDONREFService">
+    <wsdl:port binding="tns:JDONREFServiceSoapBinding" name="JDONREFPort">
+      <soap:address location="http://facade.sig.psi.minint.fr/8090e485-83d4-4631-86c6-be288628736f/services/jdonref/service"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

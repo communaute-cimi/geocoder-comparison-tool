@@ -1,0 +1,30 @@
+{
+    "limit": 5,
+    "attribution": "BAN",
+    "version": "draft",
+    "licence": "ODbL 1.0",
+    "query": "4, rue du chemin de fer 91580 Etrechy",
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [2.193402, 48.494057]
+            },
+            "properties": {
+                "citycode": "91226",
+                "postcode": "91580",
+                "name": "4 Rue du Chemin de Fer",
+                "housenumber": "4",
+                "city": "\u00c9tr\u00e9chy",
+                "context": "91, Essonne, \u00cele-de-France",
+                "score": 0.9189272727272727,
+                "label": "4 Rue du Chemin de Fer 91580 \u00c9tr\u00e9chy",
+                "id": "ADRNIVX_0000000271564291",
+                "type": "housenumber",
+                "street": "Rue du Chemin de Fer"
+            },
+            "type": "Feature"
+        }
+    ]
+}

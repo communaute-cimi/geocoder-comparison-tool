@@ -1,0 +1,51 @@
+{
+    "propositions": [
+        {
+            "valide": {
+                "code": 1,
+                "donnees": ["", "", "", "Villa des Marronniers", "", "91580 ETRECHY"],
+                "donneesOrigine": ["", "", "", "rue des marronniers", "", "91580 etrechy"],
+                "ids": ["", "", "", "1429517784", "", "91226"],
+                "note": "192.92",
+                "service": 4,
+                "t0": "05\/05\/2011",
+                "t1": "05\/05\/2060"
+            },
+            "geocode": {
+                "codeRetour": 1,
+                "propositions": {
+                    "date": "28\/06\/2016",
+                    "projection": "4326",
+                    "referentiel": "Navteq",
+                    "service": 4,
+                    "type": "5",
+                    "x": "2.1746910246782445",
+                    "y": "48.48724776272583"
+                }
+            }
+        }, {
+            "valide": {
+                "code": 1,
+                "donnees": ["", "", "", "", "", "91580 ETRECHY"],
+                "donneesOrigine": ["", "", "", "rue des marronniers", "", "91580 etrechy"],
+                "ids": ["", "", "", "", "", "91226"],
+                "note": "192.92",
+                "service": 5,
+                "t0": "05\/05\/2011",
+                "t1": "05\/05\/2060"
+            },
+            "geocode": {
+                "codeRetour": 1,
+                "propositions": {
+                    "date": "28\/06\/2016",
+                    "projection": "4326",
+                    "referentiel": "Navteq",
+                    "service": 5,
+                    "type": "6",
+                    "x": "2.1892890545960464",
+                    "y": "48.48978918977383"
+                }
+            }
+        }
+    ]
+}

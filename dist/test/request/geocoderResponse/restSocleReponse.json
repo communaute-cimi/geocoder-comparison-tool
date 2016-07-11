@@ -1,0 +1,27 @@
+{
+    "candidates": [
+        {
+            "address": "12, rue d'Auvergne 45300 Raoulu",
+            "attributes": {
+                "Postal": "45300",
+                "User_fld": "45301",
+                "Addr_type": "Loc_4",
+                "Loc_name": "Street",
+                "lon": 2.2936813,
+                "lat":48.2252538
+            },
+            "score": "200"
+        }, {
+            "address": "4, rue machin 91580 Etrechy",
+            "attributes": {
+                "Postal": "91580",
+                "User_fld": "91226",
+                "Addr_type": "Loc_3",
+                "Loc_name": "Interpo",
+                "lon": 2.4036813,
+                "lat":48.6052538
+            },
+            "score": "195"
+        }
+    ]
+}
