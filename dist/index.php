@@ -92,17 +92,17 @@ require_once ('config.inc.php');
 						<div class="modal-dialog modal-md">
 							<div class="modal-content">
 								<div style="padding:10px;">
-									<h2>Geocoding Viewer</h2>
+									<h2>Geocoder Comparison Tool</h2>
 									<div>
 										(v 0.1)
 									</div>
 									<br/>
 									<p>
-										<h3>Viewer for differents geocoders</h3>
+										<h3>Outil léger pour la comparaison de géocodeurs</h3>
 									</p>
 									<br />
 									<p>
-										Source code on <a href="https://github.com/communaute-cimi/geocoding-viewer">GitHub</a>.
+										Code source : <a href="https://github.com/communaute-cimi/geocoder-comparison-tool">GitHub</a>.
 									</p>
 									<p>
 										Développement <a href="https://twitter.com/communaute_cimi">CIMI</a>

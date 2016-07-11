@@ -16,7 +16,7 @@
             "useHttpProxy":false, 
             "jsFunction": "processBanResponse",
             "urlGeocoder": "http://api-adresse.data.gouv.fr/search/",
-            "urlProxy": "proxy/geocodeBanProxy.php",
+            "urlProxy": "proxy/GeocodeBanProxy.php",
             "mockResponse" : false
         },{
         	"shortName": "Nominatim",
